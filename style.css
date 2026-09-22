@@ -1,0 +1,59 @@
+body{
+    background: linear-gradient(to right, white, black);
+}
+
+.form-row{
+    width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px black;
+}
+
+.form-row:hover{
+    box-shadow: 0px 8px 16px black;
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
+label{
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+    display: block;
+}
+
+button{
+    display: 30px;
+    padding: 8px 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover{
+    background-color: #45a049;
+    transition: 0.3s;
+    transform: scale(1.05);
+}
+
+input[type="text"], input[type="email"], input[type="password"]{
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus{
+    border-color: black;
+    outline: none;
+}
+
+input:invalid{
+    border-color: red;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form class="needs-validation" novalidate>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip01">Primeiro nome</label>
+      <input type="text" class="form-control" id="validationTooltip01" placeholder="Primeiro nome" value="" required>
+      <div class="valid-tooltip">
+      </div>
+      <br>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltip02">Último nome</label>
+      <input type="text" class="form-control" id="validationTooltip02" placeholder="Último nome" value="" required>
+      <div class="valid-tooltip">
+        <br>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationTooltipUsername">Nome de usuário</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="validationTooltipUsernamePrepend"></span>
+        </div>
+        <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Nome de usuário" aria-describedby="validationTooltipUsernamePrepend" required>
+        <div class="invalid-tooltip">
+          Por favor, escolha um nome de usuário válido.
+        </div>
+        <br>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationTooltip03">Cidade</label>
+      <input type="text" class="form-control" id="validationTooltip03" placeholder="Cidade" required>
+      <br>
+      <div class="invalid-tooltip">
+        Por favor, informe uma cidade válida.
+      </div>
+      <br>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationTooltip04">Estado</label>
+      <input type="text" class="form-control" id="validationTooltip04" placeholder="Estado" required>
+      <div class="invalid-tooltip">
+        Por favor, informe um estado válido.
+      </div>
+      <br>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationTooltip05">CEP</label>
+      <input type="text" class="form-control" id="validationTooltip05" placeholder="CEP" required>
+      <div class="invalid-tooltip">
+        Por favor, informe um CEP válido.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+</body>
+</html>
