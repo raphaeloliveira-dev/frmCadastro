@@ -7,63 +7,95 @@
     <title>Document</title>
 </head>
 <body>
-    <form class="needs-validation" novalidate>
+<form id="formCadastro" class="needs-validation" novalidate>
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationTooltip01">Primeiro nome</label>
       <input type="text" class="form-control" id="validationTooltip01" placeholder="Primeiro nome" value="" required>
-      <div class="valid-tooltip">
-      </div>
-      <br>
+      <div class="invalid-tooltip">Por favor, informe um nome válido.</div>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationTooltip02">Último nome</label>
-      <input type="text" class="form-control" id="validationTooltip02" placeholder="Último nome" value="" required>
-      <div class="valid-tooltip">
-        <br>
-      </div>
+      <label for="validationTooltip02">Sobrenome</label>
+      <input type="text" class="form-control" id="validationTooltip02" placeholder="Sobrenome" value="" required>
+      <div class="invalid-tooltip">Por favor, informe um sobrenome válido.</div>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationTooltipUsername">Nome de usuário</label>
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="validationTooltipUsernamePrepend"></span>
+          <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
         </div>
         <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Nome de usuário" aria-describedby="validationTooltipUsernamePrepend" required>
-        <div class="invalid-tooltip">
-          Por favor, escolha um nome de usuário válido.
-        </div>
-        <br>
       </div>
+      <div class="invalid-tooltip">Por favor, escolha um nome de usuário válido.</div>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-6 mb-3">
       <label for="validationTooltip03">Cidade</label>
       <input type="text" class="form-control" id="validationTooltip03" placeholder="Cidade" required>
-      <br>
-      <div class="invalid-tooltip">
-        Por favor, informe uma cidade válida.
-      </div>
-      <br>
+      <div class="invalid-tooltip">Por favor, forneça uma cidade válida.</div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationTooltip04">Estado</label>
       <input type="text" class="form-control" id="validationTooltip04" placeholder="Estado" required>
-      <div class="invalid-tooltip">
-        Por favor, informe um estado válido.
-      </div>
-      <br>
+      <div class="invalid-tooltip">Por favor, forneça um estado válido.</div>
     </div>
     <div class="col-md-3 mb-3">
       <label for="validationTooltip05">CEP</label>
       <input type="text" class="form-control" id="validationTooltip05" placeholder="CEP" required>
-      <div class="invalid-tooltip">
-        Por favor, informe um CEP válido.
-      </div>
+      <div class="invalid-tooltip">Por favor, forneça um CEP válido.</div>
     </div>
   </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
+  <button class="btn btn-primary" type="submit">Enviar formulário</button>
 </form>
+
+<script>
+  const form = document.getElementById('formCadastro');
+
+  function setValidationState(input, isValid, message) {
+    const container = input.closest('.col-md-4, .col-md-3, .col-md-6');
+    const tooltip = container ? container.querySelector('.invalid-tooltip') : null;
+
+    input.classList.remove('is-valid', 'is-invalid');
+
+    if (!isValid) {
+      input.classList.add('is-invalid');
+      if (tooltip) {
+        tooltip.textContent = message;
+        tooltip.style.display = 'block';
+      }
+      return;
+    }
+
+    if (tooltip) {
+      tooltip.style.display = 'none';
+    }
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const firstName = document.getElementById('validationTooltip01');
+    const lastName = document.getElementById('validationTooltip02');
+    const username = document.getElementById('validationTooltipUsername');
+    const city = document.getElementById('validationTooltip03');
+    const state = document.getElementById('validationTooltip04');
+    const zip = document.getElementById('validationTooltip05');
+
+    const rules = [
+      { input: firstName, valid: /^[A-Za-zÀ-ÿ\s]{2,}$/.test(firstName.value.trim()), message: 'Por favor, informe um nome válido.' },
+      { input: lastName, valid: /^[A-Za-zÀ-ÿ\s]{2,}$/.test(lastName.value.trim()), message: 'Por favor, informe um sobrenome válido.' },
+      { input: username, valid: /^[A-Za-z0-9_]{3,}$/.test(username.value.trim()), message: 'Por favor, escolha um nome de usuário válido.' },
+      { input: city, valid: /^[A-Za-zÀ-ÿ\s-]{2,}$/.test(city.value.trim()), message: 'Por favor, forneça uma cidade válida.' },
+      { input: state, valid: /^[A-Za-zÀ-ÿ\s]{2,}$/.test(state.value.trim()), message: 'Por favor, forneça um estado válido.' },
+      { input: zip, valid: /^\d{5}-?\d{3}$/.test(zip.value.trim()), message: 'Por favor, forneça um CEP válido.' }
+    ];
+
+    rules.forEach(({ input, valid, message }) => {
+      setValidationState(input, valid, message);
+    });
+  });
+</script>
 </body>
 </html>
